@@ -1,7 +1,10 @@
 #include <windows.h>      
 #include <gl/glut.h>      
-#include <math.h>     
-#define GL_PI 3.1415f         
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#define GL_PI  (3.1415f)  
+#define oneRad (1.5*GL_PI)
 
 float fMoonRot = 0.0f;
 float fAdamRot = 0.0f;
