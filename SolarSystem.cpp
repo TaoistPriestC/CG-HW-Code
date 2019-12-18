@@ -19,15 +19,16 @@ float fNeptuneRot = 0.0f;
 GLfloat  whiteLight[] = { 0.2f,0.2f,0.2f,1.0f };
 GLfloat  lightPos[] = { 0.0f,0.0f,0.0f,1.0f };
 
-void sun()
-{
-	//绘制太阳    
+void sun() {
+	//draw the sun 
 	glColor3ub(255, 50, 0);
-	glDisable(GL_LIGHTING);   //关闭光源      
+	glRotatef(fEarthRot / 25.4, 0.0f, 1.0f, 0.0f);
+	glDisable(GL_LIGHTING);   //turn off    
 	glutSolidSphere(25.0f, 200.0f, 200.0f);
-	glEnable(GL_LIGHTING);    //启动光源    
-	glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
+	glEnable(GL_LIGHTING);    //turn on   
+	glLightfv(GL_LIGHT7, GL_POSITION, lightPos);
 }
+
 void Adam()
 {
 	//绘制水星  
@@ -41,27 +42,28 @@ void Adam()
 		fAdamRot = 0.0f;
 	glPopMatrix();
 }
-void Hesper()
-{
-	//绘制金星  
+
+void Hesper() {
 	glPushMatrix();
 	glColor3ub(255, 215, 0);
 	glRotatef(fHesperRot, 0.0f, 1.0f, 0.0f);
 	glTranslatef(40.0f, 0.0f, 0.0f);
-	glutSolidSphere(4.75f, 200.0f, 200.0f);       //金星半径是地球的95% 即4.75  
-	fHesperRot += 1.62f;                        //金星公转周期为地球61.56% ,即1.62  
+	//Hesper's radius is 95% of the earth's, 4.75 
+	glutSolidSphere(4.75f, 200.0f, 200.0f);
+	//Hesper's period of revolution is 61.56% of the earth's, 1.62
+	fHesperRot += 1.62f;
 	if (fHesperRot >= 365.0f)
 		fHesperRot = 0.0f;
 	glPopMatrix();
 }
-void Earth_Moon()
-{
+
+void Earth_Moon() {
 
 	//绘制地球,所有运行参数以地球为标准  
 	glPushMatrix();
 	glColor3ub(0, 0, 255);
 	glRotatef(fEarthRot, 0.0f, 1.0f, 0.0f);
-	glTranslatef(55.0f, 0.0f, 0.0f);           //设地球周期365  
+	glTranslatef(365.0f, 0.0f, 0.0f);           //设地球周期365  
 	glutSolidSphere(5.0f, 20.0f, 20.0f);       //设地球半径5  
 
 	//根据基于地球的坐标进行旋转，并绘制月球      
@@ -77,6 +79,7 @@ void Earth_Moon()
 	if (fEarthRot >= 365.0f)
 		fEarthRot = 0.0f;
 }
+
 
 void Mars()
 {
@@ -201,6 +204,7 @@ void Neptune()
 		fNeptuneRot = 0.0f;
 	glPopMatrix();
 }
+
 void RenderScene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -220,8 +224,8 @@ void RenderScene(void)
 	glPopMatrix();
 	glutSwapBuffers();
 }
-void ChangeSize(GLsizei w, GLsizei h)
-{
+
+void ChangeSize(GLsizei w, GLsizei h) {
 	GLfloat fAspect;
 	if (h == 0) h = 1;
 	glViewport(0, 0, w, h);
@@ -233,8 +237,8 @@ void ChangeSize(GLsizei w, GLsizei h)
 	glLoadIdentity();
 }
 
-void SetupRC(void)
-{
+
+void SetupRC(void) {
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_COLOR_MATERIAL);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -243,14 +247,87 @@ void SetupRC(void)
 	glLightfv(GL_LIGHT0, GL_POSITION, lightPos);         //0号光源的位置      
 	glEnable(GL_LIGHT0);
 }
-void TimerFunc(int value)
-{
+
+int mSecond = 10;
+
+void TimerFunc(int value) {
 	glutPostRedisplay();
-	glutTimerFunc(100, TimerFunc, 1);
+	glutTimerFunc(mSecond, TimerFunc, 1);
 }
 
-int main(int argc, char* argv[])
-{
+void keyFunc(unsigned char ch, int, int) {
+	if ('w'==ch  || 'W'==ch ) {
+		mSecond += 2;
+		if (mSecond < 0)mSecond = -mSecond; 
+		printf("mSecond:%d\n", mSecond);
+	}
+	if ('s' == ch || 'S'==ch) {
+		mSecond -= 2;
+		if (mSecond < 0)mSecond = -mSecond;
+		printf("mSecond:%d\n", mSecond);
+	}
+	if ('R' == ch || 'r'==ch) {
+		mSecond = 10;
+		fMoonRot = 0.0f;
+		fAdamRot = 0.0f;
+		fEarthRot = 0.0f;
+		fMarsRot = 0.0f;
+		fMarsatellite1 = 0.0f;
+		fMarsatellite2 = 0.0f;
+		fHesperRot = 0.0f;
+		fJupiterRot = 0.0f;
+		fSaturnRot = 0.0f;
+		fSaturn1 = 0.0f;
+		fUranusRot = 0.0f;
+		fNeptuneRot = 0.0f;
+		system("cls");
+		printf("The mSecond (%d) and all rotation angle has been reset!\n", mSecond);
+	}
+	if ('a' == ch || 'A' == ch) {
+		fMoonRot = fMoonRot + oneRad;
+		fAdamRot = fAdamRot + oneRad;
+		fEarthRot = fEarthRot + oneRad;
+		fMarsRot = fMarsRot + oneRad;
+		fMarsatellite1 = fMarsatellite1 + oneRad;
+		fMarsatellite2 =  fMarsatellite2 + oneRad;
+		fHesperRot = fHesperRot + oneRad;
+		fJupiterRot =  fJupiterRot + oneRad;
+		fSaturnRot =  fSaturnRot + oneRad;
+		fSaturn1 = fSaturn1 + oneRad;
+		fUranusRot =  fUranusRot + oneRad;
+		fNeptuneRot =  fNeptuneRot + oneRad;
+		//printf("rotation angle - oneRad\n");
+	}
+	if ('d' == ch || 'D' == ch) {
+		
+		fMoonRot = fMoonRot- oneRad;
+		fAdamRot = fAdamRot - oneRad;
+		fEarthRot = fEarthRot - oneRad;
+		fMarsRot = fMarsRot - oneRad;
+		fMarsatellite1 = fMarsatellite1 - oneRad;
+		fMarsatellite2 = fMarsatellite2 - oneRad;
+		fHesperRot = fHesperRot - oneRad;
+		fJupiterRot = fJupiterRot - oneRad;
+		fSaturnRot = fSaturnRot - oneRad;
+		fSaturn1 = fSaturn1 - oneRad;
+		fUranusRot = fUranusRot - oneRad;
+		fNeptuneRot = fNeptuneRot - oneRad;
+		//printf("rotation angle + oneRad\n");
+
+		if ('l' == ch || 'L' == ch) {
+			for (int i = 0;i < 4;i++) {
+				lightPos[i]+=10;
+		}
+	}
+		if ('j' == ch || 'J' == ch) {
+			for (int i = 0;i < 4;i++) {
+				lightPos[i]-=10;
+			}
+		}
+	}
+}
+
+int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(800, 600);
@@ -258,7 +335,10 @@ int main(int argc, char* argv[])
 	glutDisplayFunc(RenderScene);
 	glutReshapeFunc(ChangeSize);
 	SetupRC();
-	glutTimerFunc(250, TimerFunc, 1); //自动动画，计时器   
+	glutTimerFunc(250, TimerFunc, 1);
+
+	glutKeyboardFunc(keyFunc);
+
 	glutMainLoop();
 	return 0;
 }
