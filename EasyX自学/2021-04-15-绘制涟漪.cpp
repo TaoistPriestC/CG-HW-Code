@@ -6,10 +6,10 @@ int x0 = 320;				// 窗口宽度的一半
 int y0 = 240;				// 窗口高度的一半
 int r0 = 50;				// 圆形的半径
 int R0 = 15;				// 循环的圈数 Round
-int t = 0;					// 黑白颜色开关 turn
+int t = 0;				// 黑白颜色开关 turn
 
 int main(){
-	initgraph(640, 480);	// 创建绘图窗口，大小为 640x480像素
+	initgraph(640, 480);		// 创建绘图窗口，大小为 640x480像素
 	for (int i = 0; i < R0; i+=1, t = (i == R0 ? 1 - t : t), i %= R0) {
 		setlinecolor(t ? WHITE : BLACK);
 		Sleep(100);
