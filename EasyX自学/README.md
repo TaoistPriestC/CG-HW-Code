@@ -1,0 +1,1 @@
+EasyX - self-study works
