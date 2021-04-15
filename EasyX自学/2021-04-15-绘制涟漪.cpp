@@ -1,6 +1,6 @@
 #include <time.h>
 #include <conio.h>			// 引用控制台IO头文件
-#include <graphics.h>		// 引用图形绘制库头文件
+#include <graphics.h>			// 引用图形绘制库头文件
 
 int x0 = 320;				// 窗口宽度的一半
 int y0 = 240;				// 窗口高度的一半
