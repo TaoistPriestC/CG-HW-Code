@@ -1,6 +1,6 @@
 #include <time.h>
 #include <conio.h>						// 引用控制台IO头文件
-#include <graphics.h>					// 引用图形绘制库头文件
+#include <graphics.h>						// 引用图形绘制库头文件
 
 int step = 50;
 int maxRC = 8;
@@ -31,7 +31,7 @@ int main(){
 
 			_itow_s(cnt, s, 10);                            // 内置的函数，能够进行数字到字符串的转化，进制：10
 			if (cnt < 10) {
-				s[2] = s[1], s[1] = s[0], s[0] = '0';         // 对于不足两位数的进行零填充
+				s[2] = s[1], s[1] = s[0], s[0] = '0';   // 对于不足两位数的进行零填充
 			}
 			outtextxy(tx, ty, s);
 		}
