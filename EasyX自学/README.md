@@ -1,1 +1,1 @@
-EasyX - self-study works
+EasyX - Self-Study Works
