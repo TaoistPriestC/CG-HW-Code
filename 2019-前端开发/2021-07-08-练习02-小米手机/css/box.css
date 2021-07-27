@@ -1,0 +1,80 @@
+.box{
+    width: 1215px;
+    height: 770px;
+    padding-top: 10px;
+    margin: auto;
+    /* background-color: purple; */
+}
+
+.box-left{
+    float: left;
+    width: 295px;
+    height: 770px;
+    /* background-color: pink; */
+}
+
+.box-left img{
+    width: 100%;
+}
+
+.box-right{
+    float: right;
+    width: 920px;
+    height: 770px;
+    /* background-color: gray; */
+}
+
+
+
+.box-right img{
+    width: 100%;
+}
+
+.box-right a{
+    text-decoration: none;
+}
+
+.box-right a:hover{
+    color: gray;
+    box-shadow: 0px 0px 5px 2px #CCCCCC;
+}
+
+.box-right ul li{
+    float: left;
+    width: 225;
+    height: 380;
+
+    /* 若想调整margin对齐会因为坍塌现象大幅提高调试难度 */
+    padding-bottom: 5px;
+
+    margin: 0px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+
+    list-style: none;
+    background-color: #FFFFFF;
+}
+
+.box-right ul li div{
+    padding: 5px;
+    text-align: center;
+}
+
+.box-right ul li p.desription{
+    padding: 5px;
+    font-size: small;
+    color: gray;
+    text-align: center;
+}
+
+.box-right ul li p.price{
+    padding: 5px;
+    font-size: larger;
+    text-align: center;
+    color: orange;
+}
+
+.box-right ul li p.price span.num{
+    font-size: x-large;
+}
+
