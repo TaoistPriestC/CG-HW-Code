@@ -1,0 +1,112 @@
+/* 用一个实线框括住登录界面的内容 */
+.login-box{
+    width: 550px;
+
+    margin: 10px auto;   
+    padding: 20px;
+
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 0px 15px 15px 0px rgba(17, 121, 209, 0.8);
+
+    text-align: center;
+}
+
+
+
+/* 登录信息输入框 */
+.login-text-input{
+    width: 90%;
+    margin: 20px;
+    border-radius: 10px;
+}
+.login-text-input > input{
+    width: 100%;
+    height: 40px;
+
+    border: 2px solid black;;
+    border-radius: 10px;
+}
+.login-text-input > input:hover{
+    box-shadow: 0px 0px 15px 0px rgba(17, 121, 209, 0.8);
+}
+
+
+
+
+/* 登录信息提交按钮 */
+.login-button{
+    width: 100%;
+    height: 45px;
+}
+.login-button > button{
+    width: 50%;
+    height: 70%;
+
+    padding: 2px;
+    margin: 2px auto;
+
+    border: 2px;
+    border-radius: 10px;
+    
+    font-size: large;
+    color:white;
+
+    background-color: deepskyblue;
+}
+.login-button > button:hover{
+    background-color: skyblue;
+    box-shadow: 0px 0px 15px 0px rgba(14, 123, 231, 0.8);
+
+}
+.login-button > div{
+    padding: 2px;
+    margin: 2px auto;
+}
+
+
+
+
+
+/* 登录过程中可能涉及的操作*/
+.login-problem{
+    padding: 10px;
+    margin:  15px auto;
+}
+.login-association > div{
+    display: inline-block;
+    padding: 0px 5px;
+}
+.login-association > div > img{
+    width: 17px;
+    height: 17px;
+}
+.login-problem > a,
+.login-association > div > a{
+    display: inline-block;
+    
+    height: 17px;
+    line-height: 17px;
+
+    color: gray;
+}
+
+
+
+
+
+/* 页面的版权信息 */
+.login-page-cp > p {
+    display: block;
+    width: 100%;
+}
+
+.login-page-cp{
+    position: fixed;
+    left: 45%;
+    right: 45%;
+    bottom: 0px;
+
+    border-top: 1px solid #DEDEDE;
+}
+
